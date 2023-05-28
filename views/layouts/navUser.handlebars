@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!-- reset css --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    {{!-- Font Roboto--}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
+    {{!-- Font Poppins --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    {{!-- Flaticon icon --}}
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+
+    <link rel="icon" href="/images/wallet_favicon.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Electronic wallet</title>
+</head>
+<body>
+    <div id="admin">
+        <header class="header-responsive">
+            <div class="nav-overlay"></div>
+            <div class="header-responsive-icon">
+                <svg class="header-responsive-icon-menu" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="22" height="22">
+                    <rect y="11" width="24" height="2" rx="1"/>
+                    <rect y="4" width="24" height="2" rx="1"/>
+                    <rect y="18" width="24" height="2" rx="1"/>
+                </svg>
+            </div>
+
+        </header>
+        <nav class="nav-admin">
+            <div class="nav-admin-content">
+                <div class="nav-admin-info">
+                    <img src="https://preview.keenthemes.com/metronic8/demo15/assets/media/avatars/300-1.jpg" alt="Image" class="nav-admin-info-img">
+                    <span class="nav-admin-logo-name">
+                        <h3>{{fullname}}</h3>
+                    </span>
+                    <h5 class="nav-admin-logo-role">User</h5>
+                </div>
+                <div class="nav-admin-menu">
+                    <div class="nav-admin-menu-list">
+                        <div class="nav-admin-menu-items">
+                            <span class="nav-admin-menu-items-link js-menu-items-link">
+                                <span class="nav-admin-menu-items-arrowicon">
+                                    {{!-- <i class="fi fi-rr-arrow-right"></i> --}}
+                                    <?xml version="1.0" encoding="UTF-8"?>
+                                    <svg class="js-menu-items-arrowicon1" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="14" height="14">
+                                        <path d="M23.12,9.91,19.25,6a1,1,0,0,0-1.42,0h0a1,1,0,0,0,0,1.41L21.39,11H1a1,1,0,0,0-1,1H0a1,1,0,0,0,1,1H21.45l-3.62,3.61a1,1,0,0,0,0,1.42h0a1,1,0,0,0,1.42,0l3.87-3.88A3,3,0,0,0,23.12,9.91Z"/>
+                                    </svg>
+                                </span>
+                                <span class="nav-admin-menu-items-title-icon">
+                                    <span class="nav-admin-menu-items-name">User</span>
+                                    <span class="nav-admin-menu-items-arrowicon">
+                                        {{!-- <i class="fi fi-rr-angle-small-right"></i> --}}
+                                        <?xml version="1.0" encoding="UTF-8"?>
+                                        <svg class="js-menu-items-arrowicon2" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="8" height="8">
+                                        <path d="M7,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l8.17-8.17a3,3,0,0,0,0-4.24L6.29,1.71A1,1,0,0,1,7.71.29l8.17,8.17a5,5,0,0,1,0,7.08L7.71,23.71A1,1,0,0,1,7,24Z"/>
+                                        </svg>
+                                    </span>
+                                </span>
+                            </span>
+                            <a href="/addmoney" class="nav-admin-menu-items-link link-decoration">
+                                <span class="nav-admin-menu-items-arrowicon">
+                                    {{!-- <i class="fi fi-rr-arrow-right"></i> --}}
+                                    <?xml version="1.0" encoding="UTF-8"?>
+                                    <svg class="js-menu-items-arrowicon1" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="14" height="14">
+                                        <path d="M23.12,9.91,19.25,6a1,1,0,0,0-1.42,0h0a1,1,0,0,0,0,1.41L21.39,11H1a1,1,0,0,0-1,1H0a1,1,0,0,0,1,1H21.45l-3.62,3.61a1,1,0,0,0,0,1.42h0a1,1,0,0,0,1.42,0l3.87-3.88A3,3,0,0,0,23.12,9.91Z"/>
+                                    </svg>
+                                </span>
+                                <span class="nav-admin-menu-items-title-icon" >
+                                    <span class="nav-admin-menu-items-name">Nạp tiền</span>
+                                </span>
+                            </a>
+                            <a href="/withdrawmoney" class="nav-admin-menu-items-link link-decoration">
+                                <span class="nav-admin-menu-items-arrowicon">
+                                    {{!-- <i class="fi fi-rr-arrow-right"></i> --}}
+                                    <?xml version="1.0" encoding="UTF-8"?>
+                                    <svg class="js-menu-items-arrowicon1" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="14" height="14">
+                                        <path d="M23.12,9.91,19.25,6a1,1,0,0,0-1.42,0h0a1,1,0,0,0,0,1.41L21.39,11H1a1,1,0,0,0-1,1H0a1,1,0,0,0,1,1H21.45l-3.62,3.61a1,1,0,0,0,0,1.42h0a1,1,0,0,0,1.42,0l3.87-3.88A3,3,0,0,0,23.12,9.91Z"/>
+                                    </svg>
+                                </span>
+                                <span class="nav-admin-menu-items-title-icon" >
+                                    <span class="nav-admin-menu-items-name">Rút tiền</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-admin-logout">
+                    <a href="/logout" class="nav-admin-logout-icon-title">
+                        <span class="nav-admin-logout-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="16" height="16"><title>11-arrow</title>
+                                <path d="M22.763,10.232l-4.95-4.95L16.4,6.7,20.7,11H6.617v2H20.7l-4.3,4.3,1.414,1.414,4.95-4.95a2.5,2.5,0,0,0,0-3.536Z"/>
+                                <path d="M10.476,21a1,1,0,0,1-1,1H3a1,1,0,0,1-1-1V3A1,1,0,0,1,3,2H9.476a1,1,0,0,1,1,1V8.333h2V3a3,3,0,0,0-3-3H3A3,3,0,0,0,0,3V21a3,3,0,0,0,3,3H9.476a3,3,0,0,0,3-3V15.667h-2Z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-admin-logout-title">Log Out</span>
+                    </a>
+                    <span class="nav-admin-logout-icon nav-user-setting-icon">
+                        <?xml version="1.0" encoding="UTF-8"?>
+                        <svg class="nav-user-setting-icon-vector" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="16" height="16">
+                            <g>
+                                <path d="M34.283,384c17.646,30.626,56.779,41.148,87.405,23.502c0.021-0.012,0.041-0.024,0.062-0.036l9.493-5.483   c17.92,15.332,38.518,27.222,60.757,35.072V448c0,35.346,28.654,64,64,64s64-28.654,64-64v-10.944   c22.242-7.863,42.841-19.767,60.757-35.115l9.536,5.504c30.633,17.673,69.794,7.167,87.467-23.467   c17.673-30.633,7.167-69.794-23.467-87.467l0,0l-9.472-5.461c4.264-23.201,4.264-46.985,0-70.187l9.472-5.461   c30.633-17.673,41.14-56.833,23.467-87.467c-17.673-30.633-56.833-41.14-87.467-23.467l-9.493,5.483   C362.862,94.638,342.25,82.77,320,74.944V64c0-35.346-28.654-64-64-64s-64,28.654-64,64v10.944   c-22.242,7.863-42.841,19.767-60.757,35.115l-9.536-5.525C91.073,86.86,51.913,97.367,34.24,128s-7.167,69.794,23.467,87.467l0,0   l9.472,5.461c-4.264,23.201-4.264,46.985,0,70.187l-9.472,5.461C27.158,314.296,16.686,353.38,34.283,384z M256,170.667   c47.128,0,85.333,38.205,85.333,85.333S303.128,341.333,256,341.333S170.667,303.128,170.667,256S208.872,170.667,256,170.667z"/>
+                            </g>
+                        </svg>
+                        <div class="nav-user-setting-menu">
+                            <div class="nav-admin-info nav-user-setting-menu-header">
+                                <img src="https://preview.keenthemes.com/metronic8/demo15/assets/media/avatars/300-1.jpg" alt="Image" class="nav-user-setting-menu-header-img">
+                                <div class="nav-user-setting-menu-header-name">
+                                    <span class="nav-user-setting-menu-header-fullname">Paul Melone</span>
+                                    <span class="nav-user-setting-menu-header-email">minhquang@gmail.com</span>
+                                </div>
+                            </div>
+                            <div class="nav-user-setting-list">
+                                <div class="nav-user-setting-item">
+                                    <a class="nav-user-setting-item-link" href="/">My Profile</a>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </nav>
+
+        <div class="admin-container">
+            <div class="admin-container-header">
+                <div class="admin-header">
+                    <h1 class="admin-header-title">{{{title}}}</h1>
+                    <h5 class="admin-header-path">
+                        <span>{{{title}}}</span>
+                        <span>{{{currPage}}}</span>
+                    </h5>
+                </div>
+            </div>
+
+            <div class="admin-container-content">
+                <div class="admin-content">
+                    {{{body}}}
+                </div>
+            </div>
+            
+            <div class="admin-container-footer">
+                <div class="admin-container-footer-copy">
+                    <span>2022© <strong>Keenthemes</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+</html>

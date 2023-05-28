@@ -1,0 +1,67 @@
+<div class="layout-content-addmoney">
+    <div class="layout-content-title">
+        <h2>Nạp tiền</h2>
+    </div>
+    <form method="POST" action="/addmoney">
+        <div class="input-group">
+            <div class="input-box">
+                <h4 class="layout-label">Số tiền</h4>
+                <input class="layout-content-input" value="{{{rechargemoney}}}" type="number" placeholder="Nhập số tiền muốn nạp" name="rechargemoney">
+            </div>
+        </div>
+        <div class="input-group">
+            <h4 class="layout-label">Số thẻ</h4>
+            {{!-- <div class="input-box input-card">
+                <div class="input-card-credit">
+                    <input checked class="radio" type="radio" name="add" id="add1">
+                    <label for="add1">
+                        <span><i class="fa fa-cc-visa">Credit Cards</i></span>
+                    </label> 
+                </div>
+                <div class="input-card-paypals">
+                    <input class="radio" type="radio" name="add" id="add2">
+                    <label for="add2">
+                        <span><i class="fa fa-cc-visa">Paypals</i></span>
+                    </label>
+                </div>
+            </div> --}}
+            <div class="input-box">
+                <input class="layout-content-input" type="text" value="{{{idcard}}}" placeholder="Nhập số thẻ tín dụng" name="idcard">
+                <i class="fa fa-creadit-card icon"></i> 
+            </div>    
+        </div>
+        {{!-- <div class="input-group">
+            <div class="input-box">
+                <input class="layout-content-input" type="tel layout-content-input" placeholder="Card number" required>
+                <i class="fa fa-creadit-card icon"></i> 
+            </div>    
+        </div> --}}
+        <div class="input-group">
+            <h4 class="layout-label">Ngày hết hạn</h4>
+            <div class="input-box">
+                <input type="date"  value="{{{expirationdate}}}" class="layout-content-input"  name="expirationdate">
+            </div>  
+        </div> 
+        <div class="input-group">
+            <h4 class="layout-label">Mã cvv</h4>
+            <div class="input-box input-box-cvc">
+                <input class="layout-content-input" value="{{{idcvv}}}" type="text" placeholder="Nhập mã cvv" name="idcvv">
+                <i class="fa fa-user icon"></i> 
+            </div> 
+        </div>
+        {{#if error}}
+            <div class="layout-content-group error-form">
+                {{error}}
+            </div>
+        {{/if}}
+        <div class="input-group">
+            <div class="input-box">
+                <div class="form-btn form-btn-login">
+                    <button class="btn btn-recharge" type="submit">Confirm</button>
+                </div>
+            </div>    
+        </div>
+    </form>
+</div>
+
+            

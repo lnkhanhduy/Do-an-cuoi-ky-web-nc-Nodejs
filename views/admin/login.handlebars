@@ -1,0 +1,32 @@
+<div class="layout-content">
+    <div class="layout-content-form">
+        <div class="layout-content-title">
+            <h3>Login to Admin</h3>
+        </div>
+        <form action="../admin/login" method="POST">
+            <div class="layout-content-form-tab-login">
+                <div class="layout-content-group layout-content-group-login">
+                    <label class="layout-label" for="">Username</label>
+                    <input type="text" value="{{username}}"name="username" id="username" class="layout-content-input" placeholder="Username">
+                </div>
+                <div class="layout-content-group">
+                    <label class="layout-label layout-content-group-login" for="">Password</label>
+                    <input type="password" name="password" class="layout-content-input" placeholder="Password">
+                </div>
+            </div>
+            {{#if error}}
+                <div class="layout-content-group error-form">
+                    {{error}}
+                </div>
+            {{/if}}
+            <div class="form-btn">
+                <button class="btn btn-login" type="submit">Sign in</button>
+            </div>
+            
+        </form>
+        <div class="copy-right">
+            <span>2022© <strong>Keenthemes</strong></span>
+        </div>
+    </div>
+</div>
+

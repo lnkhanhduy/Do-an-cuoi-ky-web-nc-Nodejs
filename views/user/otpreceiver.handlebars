@@ -1,0 +1,33 @@
+<div class="layout-content">
+  <div class="layout-content-form">
+    <div class="layout-content-title">
+      <h3>Forgotten Password ?</h3>
+    <div class="form-forgot-password-tab">
+      <form action="/OTP/{{email}}" method="POST" id="form-OTP">
+        <div class="layout-content-form-tab-login">
+          <div class="layout-content-group layout-content-group-login">
+            <label class="layout-label">enter OTP (code consists of 6 numbers)</label>
+            <input
+              type="text"
+              name="otp"
+              class="layout-content-input"
+              placeholder="enter OTP"
+            />
+          </div>
+        </div>
+         {{#if message}}
+            <div class="layout-content-group error-form">
+                {{message}}
+            </div>
+        {{/if}}
+        <div class="form-btn">
+            <button class="btn btn-previous"type="button">Previous</button>
+            <button class="btn btn-next" type="submit">Next</button>
+        </div>
+      </form>
+    </div>
+    <div class="copy-right">
+      <span>2022© <strong>Keenthemes</strong></span>
+    </div>
+  </div>
+</div>

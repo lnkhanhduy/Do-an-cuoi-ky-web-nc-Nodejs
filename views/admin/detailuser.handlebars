@@ -1,0 +1,223 @@
+<div class="admin-content-page-grid">
+    <div class="admin-content-page-row">
+        <div class="admin-content-page-column-4">
+            <div class="admin-detail-user">
+                {{#each user}}
+                    <div class="admin-detail-user-header">
+                        <img src="https://preview.keenthemes.com/metronic8/demo15/assets/media/avatars/300-1.jpg" class="admin-detail-user-img" alt="Image">
+                        <h3 id="nameUser"class="admin-detail-user-name">{{{this.fullname}}}</h3>
+                    </div>
+                    <div class="admin-detail-user-tab">
+                        <span class="admin-detail-user-info admin-detail-user-tab-active">Details</span>
+                        <span class="admin-detail-user-id-card">ID card</span>
+                    </div>
+                    <div class="admin-detail-user-content">
+                            <div class="admin-detail-user-content-info">
+                                <div class="admin-detail-user-content-item">
+                                    <label class="admin-detail-user-content-item-label">Email</label>
+                                    <span class="admin-detail-user-content-item-name">{{{this.email}}}</span>
+                                </div>
+                                <div class="admin-detail-user-content-item">
+                                    <label class="admin-detail-user-content-item-label">phone number</label>
+                                    <span class="admin-detail-user-content-item-name">{{{this.phone}}}</span>
+                                </div>
+                                <div class="admin-detail-user-content-item">
+                                    <label class="admin-detail-user-content-item-label">Date of birth</label>
+                                    <span class="admin-detail-user-content-item-name">{{{this.birthday}}}</span>
+                                </div>
+                                <div class="admin-detail-user-content-item">
+                                    <label class="admin-detail-user-content-item-label">Address</label>
+                                    <span class="admin-detail-user-content-item-name">{{{this.address}}}</span>
+                                </div>
+                            </div>
+                            <div class="admin-detail-user-content-item-id-card">
+                                <div class="admin-detail-user-content-item">
+                                    <label class="admin-detail-user-content-item-label">photo ID card (Front)</label>
+                                    <img src="/{{{this.email}}}/images/{{{this.cmndfront.name}}}" class="admin-detail-user-img-id-card" alt="Image">
+                                </div>
+                                <div class="admin-detail-user-content-item">
+                                    <label class="admin-detail-user-content-item-label">photo ID card (Back Side)</label>
+                                    <img src="/{{{this.email}}}/images/{{{this.cmndback.name}}}" class="admin-detail-user-img-id-card" alt="Image">
+                                </div>
+                            </div>
+                    </div>
+                    <form method="POST" action="" id="confirm-number">
+                        {{#if (and
+                                    (ne this.status 1)
+                                    (ne this.status 2)
+                                )}}
+                            <div class="admin-detail-user-btn-waiting-active">
+                                <button id ="verification" type="button"  data-toggle="modal"  data-target="#confirm-submit" class="btn btn-bottom btn-verification js-btn-detail-user-verification">Verification
+                                    <input type="hidden" name="verification" />
+                                </button>
+                                <button id ="cancel" type="button" data-toggle="modal"  data-target="#confirm-submit"class="btn btn-bottom btn-cancel js-btn-detail-user-cancel">Cancel
+                                    <input type="hidden" name="cancel" />
+                                </button>
+                                <button id ="additional" type="button" data-toggle="modal"  data-target="#confirm-submit" class="btn btn-bottom btn-additional js-btn-detail-user-additional">Additional
+                                    <input type="hidden" name="additional" />
+                                </button>
+                            </div>
+                        {{/if}}
+                        {{#compare this.isBlock 'eq' true}}
+                            <div class="admin-detail-user-btn-unlock">
+                                <button id="unlock" type="button" data-toggle="modal"  data-target="#confirm-submit" class="btn btn-bottom btn-unlock js-btn-detail-user-unlock">Unlock
+                                    <input type="hidden" name="unlock"/>
+                                </button>
+                            </div>
+                        {{/compare}}
+                    </form>
+                 {{/each}}
+            </div>
+        </div>
+        <div class="admin-content-page-column-8">
+            <div class="admin-transaction-history">
+                <div class="admin-transaction-history-header">
+                    <span class="admin-header-name">Transaction history</span>
+                </div>
+                <div class="admin-transaction-history-content page-admin">
+                    <div class="admin-content-header">
+                        <span class="admin-content-header-search">
+                            <input type="text" class="admin-content-header-search-input" placeholder="Search user">
+                            <?xml version="1.0" encoding="UTF-8"?>
+                            <svg class="admin-content-header-icon-search" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="14" height="14">
+                                <path d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    {{!-- admin-transaction-history-content-table-show --}}
+                    <div class="admin-transaction-history-content-table admin-transaction-history-content-table-show js-have-transactions">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="table-thead">
+                                    <tr>
+                                        <th class="table-thead-trading-code">Trading code</th>
+                                        <th class="table-thead-user">Day trading</th>
+                                        <th class="table-thead-phone">Form</th>
+                                        <th class="table-thead-vnd">Amount of money - VND</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                {{#each result}}
+                                    <tbody class="table-tbody">
+                                        <tr>
+                                            <td class="table-tbody-td-id">{{{this.id}}}</td>
+                                            <td class="table-tbody-td-date">{{{this.date}}}</td>
+
+                                            {{#compare this.action 'eq' 1}}
+                                                <td>
+                                                    <span class="table-tbody-td-status table-tbody-td-status-tranfer">Nạp tiền</span>
+                                                </td>
+                                            {{/compare}}
+                                            {{#compare this.action 'eq' 2}}
+                                                <td>
+                                                    <span class="table-tbody-td-status table-tbody-td-status-withdraw">Rút tiền</span>
+                                                </td>
+                                            {{/compare}}
+                                            {{#compare this.action 'eq' 3}}
+                                                <td>
+                                                    <span class="table-tbody-td-status table-tbody-td-status-withdraw">Chờ duyệt</span>
+                                                </td>
+                                            {{/compare}}
+                                            <td class="table-tbody-td-date">{{addDos this.money}}</td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                {{/each}}
+                            </table>
+                        </div>
+                    </div>
+                    {{#compare pageTotal 'eq' 0}}
+                            <div class="admin-transaction-history-content-table js-no-transactions">
+                            <div class="admin-transaction-history-content-no-transactions-img" style="background-image: url(/images/notransaction.png);">
+                                <span class="admin-transaction-history-content-no-transactions-title">There are no transactions</span>
+                            </div>
+                        </div>
+                    {{/compare}}
+                    <div class="admin-transaction-history-content-page">
+                        <div class="admin-content-page">
+                            <div class="admin-content-page-row">
+                                <div class="admin-content-page-column-4"></div>
+                                <div class="admin-content-page-column-8">
+                                    <div class="admin-content-makeup">
+                                        <ul class="admin-content-makeup-list">
+                                            {{#if prevP}}
+                                                <li>
+                                                    <a href="/admin/detail-user/{{id}}" class="admin-content-makeup-items">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="10" height="10">
+                                                            <path d="M12,24a1,1,0,0,1-.71-.29L3.12,15.54a5,5,0,0,1,0-7.08L11.29.29a1,1,0,1,1,1.42,1.42L4.54,9.88a3,3,0,0,0,0,4.24l8.17,8.17a1,1,0,0,1,0,1.42A1,1,0,0,1,12,24Z"/>
+                                                            <path d="M22,24a1,1,0,0,1-.71-.29l-9.58-9.59a3,3,0,0,1,0-4.24L21.29.29a1,1,0,1,1,1.42,1.42l-9.59,9.58a1,1,0,0,0,0,1.42l9.59,9.58a1,1,0,0,1,0,1.42A1,1,0,0,1,22,24Z"/>
+                                                        </svg>
+                                                    </a>
+                                                </li>
+                                            {{/if}}
+                                            {{#if prevPage}}
+                                                <li>
+                                                    <a href="/admin/detail-user/{{id}}/search/{{prevPage}}" class="admin-content-makeup-items">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="10" height="10">
+                                                            <path d="M17.17,24a1,1,0,0,1-.71-.29L8.29,15.54a5,5,0,0,1,0-7.08L16.46.29a1,1,0,1,1,1.42,1.42L9.71,9.88a3,3,0,0,0,0,4.24l8.17,8.17a1,1,0,0,1,0,1.42A1,1,0,0,1,17.17,24Z"/>
+                                                        </svg>
+                                                    </a>
+                                                </li>
+                                            {{/if}}
+                                            {{#each totalPages}}
+                                                    {{#compare (inc @index) 'eq' ../currentpage}}
+                                                        <li>
+                                                            <a href="/admin/detail-user/{{../id}}/search/{{inc @index}}" class="admin-content-makeup-items admin-content-makeup-items-active">{{inc @index}}</a>
+                                                        </li>
+                                                    {{else}}
+                                                        <li>
+                                                            <a href="/admin/detail-user/{{../id}}/search/{{inc @index}}" class="admin-content-makeup-items admin-content-makeup-items">{{inc @index}}</a>
+                                                        </li>
+                                                    {{/compare}}
+                                            {{/each}}
+                                            {{#if nextPage}}
+                                                <li>
+                                                    <a href="/admin/detail-user/{{id}}/search/{{nextPage}}" class="admin-content-makeup-items">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="10" height="10">
+                                                            <path d="M7,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l8.17-8.17a3,3,0,0,0,0-4.24L6.29,1.71A1,1,0,0,1,7.71.29l8.17,8.17a5,5,0,0,1,0,7.08L7.71,23.71A1,1,0,0,1,7,24Z"/>
+                                                        </svg>
+                                                    </a>
+                                                </li>
+                                            {{/if}}
+                                            {{#if nextP}}
+                                                <li>
+                                                    <a href="/admin/detail-user/{{id}}/search/{{nextP}}" class="admin-content-makeup-items">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="10" height="10">
+                                                            <path d="M11.83,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l8.17-8.17a3,3,0,0,0,0-4.24L11.12,1.71A1,1,0,1,1,12.54.29l8.17,8.17a5,5,0,0,1,0,7.08l-8.17,8.17A1,1,0,0,1,11.83,24Z"/>
+                                                            <path d="M1.83,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l9.59-9.58a1,1,0,0,0,0-1.42L1.12,1.71A1,1,0,0,1,2.54.29l9.58,9.59a3,3,0,0,1,0,4.24L2.54,23.71A1,1,0,0,1,1.83,24Z"/>
+                                                        </svg>
+                                                    </a>
+                                                </li>
+                                            {{/if}}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+</div>
+
+<div class="modal js-modal-detail-user">
+    <div class="modal-overlay"></div>
+    <div class="modal-body">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-header-icon-close">
+                    <svg  class="modal-header-vector-icon-close js-modal-detail-user-icon-close" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="14" height="14">
+                        <path d="M23.707.293h0a1,1,0,0,0-1.414,0L12,10.586,1.707.293a1,1,0,0,0-1.414,0h0a1,1,0,0,0,0,1.414L10.586,12,.293,22.293a1,1,0,0,0,0,1.414h0a1,1,0,0,0,1.414,0L12,13.414,22.293,23.707a1,1,0,0,0,1.414,0h0a1,1,0,0,0,0-1.414L13.414,12,23.707,1.707A1,1,0,0,0,23.707.293Z"/>
+                    </svg>
+                </span>
+                <h3 class="modal-header-title"></h3>
+                <span class="modal-header-content"></span>
+            </div>
+            <div class="modal-footer-btn">
+                <button class="btn btn-cancel js-modal-detail-user-close">Cancel</button>
+                 <button id = "submit-form" type="submit" class="btn btn-verification">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>

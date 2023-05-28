@@ -1,0 +1,68 @@
+
+<div class="layout-content">
+    <div class="layout-content-form">
+        <div class="layout-content-title">
+            <h3>Sign Up to E-Wallet</h3>
+            <span>Already has a account? <a href="/login">Login here</a></span>
+            <h4></h4>
+        </div>
+        <form id = "registerForm"action="/register" method="POST" enctype="multipart/form-data">
+            <div class="layout-content-form-tab">
+                <div class="layout-content-group">
+                    <input type="text" name="name" id="name" class="layout-content-input" placeholder="full name">
+                </div>
+                <div class="layout-content-group">
+                    <input type="text" name="email" id="email" class="layout-content-input" placeholder="email address">
+                </div>
+                <div class="layout-content-group">
+                    <input type="text" name="phone" id="phone"  class="layout-content-input" placeholder="phone number">
+                </div>
+                <div class="layout-content-group">
+                    <input type="datetime-local" step="1" name="birth" id="birth" class="layout-content-input" placeholder="date of birth">
+                </div>
+                <div class="layout-content-group">
+                    <input type="text" name="address" id="address" class="layout-content-input" placeholder="address">
+                </div>
+                <div class = "mx-auto my-5">
+                    <div id ="error" {{#if message}} style="display: block" {{else}} style="display: none" {{/if}} class = "alert alert-danger text-center layout-content-group error-form">
+                        {{#if message}} {{{message}}} {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="layout-content-form-tab">
+                <div class="layout-content-group">
+                    <input type="file" id="file-photo-front" name="idfront" class="layout-content-input file-input-front" accept="image/*">
+                    <label for="file-photo-front" class="layout-content-input upload-photo">
+                        <span class="file-placeholder-front">Choose file (Front)</span>
+                        <span class="file-name file-name-front"></span>
+                        <label class = "file-browse" for="file-photo-front">Browse</label>
+                    </label>
+                    <div class="file-image file-image-front">
+                    </div>
+                </div>
+                <div class="layout-content-group">
+                    <input type="file" id="file-photo-backside" name="idbackside" class="layout-content-input file-input-backside" accept="image/*">
+                    <label for="file-photo-backside" class="layout-content-input upload-photo">
+                        <span class="file-placeholder-backside">Choose file (Back Side)</span>
+                        <span class="file-name file-name-backside"></span>
+                        <label class = "file-browse" for="file-photo-backside">Browse</label>
+                    </label>
+                    <div class="file-image file-image-backside">
+                    </div>
+                </div>
+                <div class = "mx-auto my-5">
+                    <div id ="error-file" style="display: none" class = "text-center layout-content-group error-form">123</div>
+                </div>
+            </div>
+            <div class="form-btn">
+                <button class="btn btn-previous" id ="next-button" type="button" onclick="prevTab(-1)">Previous</button>
+                <button class="btn btn-next" type="button" onclick="nextTab(1)">Next</button>
+                <button class="btn btn-create-account" type="submit">Submit</button>
+            </div>
+            <div class="copy-right">
+                <span>2022© <strong>Keenthemes</strong></span>
+            </div>
+        </form>
+    </div>
+</div>
+

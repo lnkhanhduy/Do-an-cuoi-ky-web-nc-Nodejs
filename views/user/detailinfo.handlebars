@@ -1,0 +1,497 @@
+<div class="admin-content-page-grid">
+        <div class="admin-content-page-row">
+            <div class="admin-content-page-column-4">
+                {{#each user}}
+                    <div class="admin-detail-user">
+                            <div class="admin-detail-user-header">
+                                <img src="https://preview.keenthemes.com/metronic8/demo15/assets/media/avatars/300-1.jpg" class="admin-detail-user-img" alt="Image">
+                                <h3 class="admin-detail-user-name">{{this.fullname}}</h3>
+                            </div>
+                            <div class="admin-detail-user-tab">
+                                <span class="admin-detail-user-info admin-detail-user-tab-active">Details</span>
+                                <span class="admin-detail-user-id-card">ID card</span>
+                            </div>
+                            <div class="admin-detail-user-content">
+                                <div class="admin-detail-user-content-info">
+                                    <div class="admin-detail-user-content-item">
+                                        <label class="admin-detail-user-content-item-label">Email</label>
+                                        <span class="admin-detail-user-content-item-name">{{this.email}}</span>
+                                    </div>
+                                    <div class="admin-detail-user-content-item">
+                                        <label class="admin-detail-user-content-item-label">phone number</label>
+                                        <span class="admin-detail-user-content-item-name">{{this.phone}}</span>
+                                    </div>
+                                    <div class="admin-detail-user-content-item">
+                                        <label class="admin-detail-user-content-item-label">Date of birth</label>
+                                        <span class="admin-detail-user-content-item-name">{{this.birthday}}</span>
+                                    </div>
+                                    <div class="admin-detail-user-content-item">
+                                        <label class="admin-detail-user-content-item-label">Address</label>
+                                        <span class="admin-detail-user-content-item-name">{{this.address}}</span>
+                                    </div>
+                                </div>
+                                <div class="admin-detail-user-content-item-id-card">
+                                    <div class="admin-detail-user-content-item">
+                                        <label class="admin-detail-user-content-item-label">photo ID card (Front)</label>
+                                        <img src="/{{{this.email}}}/images/{{{this.cmndfront.name}}}" class="admin-detail-user-img-id-card" alt="Image">
+                                    </div>
+                                    <div class="admin-detail-user-content-item">
+                                        <label class="admin-detail-user-content-item-label">photo ID card (Back Side)</label>
+                                        <img  src="/{{{this.email}}}/images/{{{this.cmndback.name}}}" class="admin-detail-user-img-id-card" alt="Image">
+                                    </div>
+                                </div>
+                            </div>
+                        {{!-- <div class="admin-detail-user-btn-change-password">
+                            <button class="btn btn-bottom btn-change-password">change password</button>
+                        </div> --}}
+                    </div>
+                {{/each}}
+            </div>
+            <div class="admin-content-page-column-8">
+                <div class="admin-transaction-history">
+                    <div class="admin-header-name-change-tab admin-transaction-history-header">
+                        {{#if mess}}
+                            <span class="admin-header-name admin-header-name-tab admin-transaction-header-title">Transaction history</span>
+                            <span class="admin-header-name admin-header-name-tab admin-password-header-title admin-header-name-tab-active">change password</span>
+                            <span class="admin-header-name admin-header-name-tab admin-update-id-card-header-title">update id card</span>
+                        {{else}}
+                            <span class="admin-header-name admin-header-name-tab admin-transaction-header-title admin-header-name-tab-active">Transaction history</span>
+                            <span class="admin-header-name admin-header-name-tab admin-password-header-title">change password</span>
+                            <span class="admin-header-name admin-header-name-tab admin-update-id-card-header-title">update id card</span>
+                        {{/if}}
+                        {{!-- <div class="admin-header-line"></div> --}}
+                    </div>
+                    {{#if mess}}
+                        <div class="admin-transaction-history-content mr-24 admin-header-name-tab-pane">
+                            <div class="admin-content-header">
+                                <span class="admin-content-header-search">
+                                    <input type="text" class="admin-content-header-search-input" placeholder="Search user">
+                                    <?xml version="1.0" encoding="UTF-8"?>
+                                    <svg class="admin-content-header-icon-search" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="14" height="14">
+                                        <path d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z"/>
+                                    </svg>
+                                </span>
+                            </div>
+                            
+                            {{!-- admin-transaction-history-content-table-show --}}
+                            <div class="admin-transaction-history-content-table admin-transaction-history-content-table-show js-have-transactions">
+                                <div class="table-responsive">
+                                    <table class="table" id="history-table">
+                                        <thead class="table-thead">
+                                            <tr>
+                                                <th class="table-thead-trading-code">Trading code</th>
+                                                <th class="table-thead-user">Day trading</th>
+                                                <th class="table-thead-phone">Status</th>
+                                                <th class="table-thead-vnd">Amount of money - VND</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        {{#each result}}
+                                            <tbody class="table-tbody">
+                                                <tr>
+                                                    <td class="table-tbody-td-id">{{{this.id}}}</td>
+                                                    <td class="table-tbody-td-date">{{{this.date}}}</td>
+
+                                                    {{#compare this.action 'eq' 1}}
+                                                        <td>
+                                                            <span class="table-tbody-td-status table-tbody-td-status-tranfer">Nạp tiền</span>
+                                                        </td>
+                                                    {{/compare}}
+                                                    {{#compare this.action 'eq' 2}}
+                                                        <td>
+                                                            <span class="table-tbody-td-status table-tbody-td-status-withdraw">Rút tiền</span>
+                                                        </td>
+                                                    {{/compare}}
+                                                    {{#compare this.action 'eq' 3}}
+                                                        <td>
+                                                            <span class="table-tbody-td-status table-tbody-td-status-withdraw">Chờ duyệt</span>
+                                                        </td>
+                                                    {{/compare}}
+                                                    <td class="table-tbody-td-date">{{addDos this.money}}</td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        {{/each}}
+                                    </table>
+                                </div>
+                            </div>
+                            {{#compare pageTotal 'eq' 0}}
+                                <div class="admin-transaction-history-content-table js-no-transactions">
+                                    <div class="admin-transaction-history-content-no-transactions-img" style="background-image: url(/images/notransaction.png);">
+                                        <span class="admin-transaction-history-content-no-transactions-title">There are no transactions</span>
+                                    </div>
+                                </div>
+                            {{/compare}}
+                            <div class="admin-transaction-history-content-page">
+                                <div class="admin-content-page">
+                                    <div class="admin-content-page-row">
+                                        <div class="admin-content-page-column-4"></div>
+                                        <div class="admin-content-page-column-8">
+                                            <div class="admin-content-makeup">
+                                                <ul class="admin-content-makeup-list">
+                                                    {{#if prevP}}
+                                                        <li>
+                                                            <a href="/" class="admin-content-makeup-items">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="10" height="10">
+                                                                    <path d="M12,24a1,1,0,0,1-.71-.29L3.12,15.54a5,5,0,0,1,0-7.08L11.29.29a1,1,0,1,1,1.42,1.42L4.54,9.88a3,3,0,0,0,0,4.24l8.17,8.17a1,1,0,0,1,0,1.42A1,1,0,0,1,12,24Z"/>
+                                                                    <path d="M22,24a1,1,0,0,1-.71-.29l-9.58-9.59a3,3,0,0,1,0-4.24L21.29.29a1,1,0,1,1,1.42,1.42l-9.59,9.58a1,1,0,0,0,0,1.42l9.59,9.58a1,1,0,0,1,0,1.42A1,1,0,0,1,22,24Z"/>
+                                                                </svg>
+                                                            </a>
+                                                        </li>
+                                                    {{/if}}
+                                                    {{#if prevPage}}
+                                                        <li>
+                                                            <a href="/search/{{prevPage}}" class="admin-content-makeup-items">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="10" height="10">
+                                                                    <path d="M17.17,24a1,1,0,0,1-.71-.29L8.29,15.54a5,5,0,0,1,0-7.08L16.46.29a1,1,0,1,1,1.42,1.42L9.71,9.88a3,3,0,0,0,0,4.24l8.17,8.17a1,1,0,0,1,0,1.42A1,1,0,0,1,17.17,24Z"/>
+                                                                </svg>
+                                                            </a>
+                                                        </li>
+                                                    {{/if}}
+                                                    {{#each totalPages}}
+                                                            {{#compare (inc @index) 'eq' ../currentpage}}
+                                                                <li>
+                                                                    <a href="/search/{{inc @index}}" class="admin-content-makeup-items admin-content-makeup-items-active">{{inc @index}}</a>
+                                                                </li>
+                                                            {{else}}
+                                                                <li>
+                                                                    <a href="/search/{{inc @index}}" class="admin-content-makeup-items admin-content-makeup-items">{{inc @index}}</a>
+                                                                </li>
+                                                            {{/compare}}
+                                                    {{/each}}
+                                                    {{#if nextPage}}
+                                                        <li>
+                                                            <a href="/search/{{nextPage}}" class="admin-content-makeup-items">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="10" height="10">
+                                                                    <path d="M7,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l8.17-8.17a3,3,0,0,0,0-4.24L6.29,1.71A1,1,0,0,1,7.71.29l8.17,8.17a5,5,0,0,1,0,7.08L7.71,23.71A1,1,0,0,1,7,24Z"/>
+                                                                </svg>
+                                                            </a>
+                                                        </li>
+                                                    {{/if}}
+                                                    {{#if nextP}}
+                                                        <li>
+                                                            <a href="/search/{{nextP}}" class="admin-content-makeup-items">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="10" height="10">
+                                                                    <path d="M11.83,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l8.17-8.17a3,3,0,0,0,0-4.24L11.12,1.71A1,1,0,1,1,12.54.29l8.17,8.17a5,5,0,0,1,0,7.08l-8.17,8.17A1,1,0,0,1,11.83,24Z"/>
+                                                                    <path d="M1.83,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l9.59-9.58a1,1,0,0,0,0-1.42L1.12,1.71A1,1,0,0,1,2.54.29l9.58,9.59a3,3,0,0,1,0,4.24L2.54,23.71A1,1,0,0,1,1.83,24Z"/>
+                                                                </svg>
+                                                            </a>
+                                                        </li>
+                                                    {{/if}}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admin-content-page-change-password mr-24 admin-header-name-tab-pane active">
+                            <div class="admin-content-page-change-password-container">
+                                <div class="form-change-password">
+                                    <form method="POST" action="" id ="changepasswordForm">
+                                        <div class="layout-content-form-tab-change-password">
+                                            <div class="layout-content-group">
+                                                <label class="layout-label" for="">old password</label>
+                                                <input type="password" id = "oldpassword" name="oldpassword" class="layout-content-input form-oldpass" placeholder="old password">
+                                            </div>
+                                            <div class="layout-content-group">
+                                                <label class="layout-label" for="">New Password</label>
+                                                <input type="password" id = "newchangepassword" name="newchangepassword" class="layout-content-input form-newpass" placeholder="New Password">
+                                            </div>
+                                            <div class="layout-content-group">
+                                                <label class="layout-label" for="">Comfirm New Password</label>
+                                                <input type="password" id = "comfirmpassword" name="comfirmpassword" class="layout-content-input form-confirmpass" placeholder="Comfirm New Password">
+                                            </div>
+                                        </div>
+                                        {{#if mess}}
+                                            <div id="error-changePassword" class="layout-content-group error-form">{{{mess}}}</div>
+                                        {{/if}}
+                                        <div style="display:none" id="error-changePassword" class="layout-content-group error-form"></div>
+                                        <div class="form-btn">
+                                            <button type="button" data-toggle="modal"  id="submitBtn" data-target="#confirm-submit" class="btn btn-login js-change-password">Change Password</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admin-detail-user-update-id-card mr-24 admin-header-name-tab-pane">
+                            <div class="admin-content-page-update-id-card-container">
+                                <div class="form-update-id-card">
+                                    <form method="POST" action="" enctype="multipart/form-data">
+                                        <div class="layout-content-group">
+                                            <input type="file" id="file-photo-front" name="idfrontChange" class="layout-content-input file-input-front" accept="image/*">
+                                            <label for="file-photo-front" class="layout-content-input upload-photo">
+                                                <span class="file-placeholder-front">Choose file (Front)</span>
+                                                <span class="file-name file-name-front"></span>
+                                                <label class = "file-browse" for="file-photo-front">Browse</label>
+                                            </label>
+                                            <div class="file-image file-image-front">
+                                            </div>
+                                        </div>
+                                        <div class="layout-content-group">
+                                            <input type="file" id="file-photo-backside" name="idbacksideChange" class="layout-content-input file-input-backside" accept="image/*">
+                                            <label for="file-photo-backside" class="layout-content-input upload-photo">
+                                                <span class="file-placeholder-backside">Choose file (Back Side)</span>
+                                                <span class="file-name file-name-backside"></span>
+                                                <label class = "file-browse" for="file-photo-backside">Browse</label>
+                                            </label>
+                                            <div class="file-image file-image-backside">
+                                            </div>
+                                        </div>
+                                        <div class="form-btn">
+                                            <button type="submit" class="btn btn-login js-change-password">Update</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    {{else}}
+                        <div class="admin-transaction-history-content mr-24 admin-header-name-tab-pane active">
+                            <div class="admin-content-header">
+                                <span class="admin-content-header-search">
+                                    <input type="text" class="admin-content-header-search-input" placeholder="Search user">
+                                    <?xml version="1.0" encoding="UTF-8"?>
+                                    <svg class="admin-content-header-icon-search" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="14" height="14">
+                                        <path d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z"/>
+                                    </svg>
+                                </span>
+                            </div>
+                            
+                            {{!-- admin-transaction-history-content-table-show --}}
+                            <div class="admin-transaction-history-content-table admin-transaction-history-content-table-show js-have-transactions">
+                                <div class="table-responsive">
+                                    <table class="table" id="history-table">
+                                        <thead class="table-thead">
+                                            <tr>
+                                                <th class="table-thead-trading-code">Trading code</th>
+                                                <th class="table-thead-user">Day trading</th>
+                                                <th class="table-thead-phone">Status</th>
+                                                <th class="table-thead-vnd">Amount of money - VND</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        {{#each result}}
+                                            <tbody class="table-tbody">
+                                                <tr>
+                                                    <td class="table-tbody-td-id">{{{this.id}}}</td>
+                                                    <td class="table-tbody-td-date">{{{this.date}}}</td>
+
+                                                    {{#compare this.action 'eq' 1}}
+                                                        <td>
+                                                            <span class="table-tbody-td-status table-tbody-td-status-tranfer">Nạp tiền</span>
+                                                        </td>
+                                                    {{/compare}}
+                                                    {{#compare this.action 'eq' 2}}
+                                                        <td>
+                                                            <span class="table-tbody-td-status table-tbody-td-status-withdraw">Rút tiền</span>
+                                                        </td>
+                                                    {{/compare}}
+                                                    {{#compare this.action 'eq' 3}}
+                                                        <td>
+                                                            <span class="table-tbody-td-status table-tbody-td-status-withdraw">Chờ duyệt</span>
+                                                        </td>
+                                                    {{/compare}}
+                                                    <td class="table-tbody-td-date">{{addDos this.money}}</td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        {{/each}}
+                                    </table>
+                                </div>
+                            </div>
+                            {{#compare pageTotal 'eq' 0}}
+                                <div class="admin-transaction-history-content-table js-no-transactions">
+                                    <div class="admin-transaction-history-content-no-transactions-img" style="background-image: url(/images/notransaction.png);">
+                                        <span class="admin-transaction-history-content-no-transactions-title">There are no transactions</span>
+                                    </div>
+                                </div>
+                            {{/compare}}
+                            <div class="admin-transaction-history-content-page">
+                                <div class="admin-content-page">
+                                    <div class="admin-content-page-row">
+                                        <div class="admin-content-page-column-4"></div>
+                                        <div class="admin-content-page-column-8">
+                                            <div class="admin-content-makeup">
+                                                <ul class="admin-content-makeup-list">
+                                                    {{#if prevP}}
+                                                        <li>
+                                                            <a href="/" class="admin-content-makeup-items">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="10" height="10">
+                                                                    <path d="M12,24a1,1,0,0,1-.71-.29L3.12,15.54a5,5,0,0,1,0-7.08L11.29.29a1,1,0,1,1,1.42,1.42L4.54,9.88a3,3,0,0,0,0,4.24l8.17,8.17a1,1,0,0,1,0,1.42A1,1,0,0,1,12,24Z"/>
+                                                                    <path d="M22,24a1,1,0,0,1-.71-.29l-9.58-9.59a3,3,0,0,1,0-4.24L21.29.29a1,1,0,1,1,1.42,1.42l-9.59,9.58a1,1,0,0,0,0,1.42l9.59,9.58a1,1,0,0,1,0,1.42A1,1,0,0,1,22,24Z"/>
+                                                                </svg>
+                                                            </a>
+                                                        </li>
+                                                    {{/if}}
+                                                    {{#if prevPage}}
+                                                        <li>
+                                                            <a href="/search/{{prevPage}}" class="admin-content-makeup-items">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="10" height="10">
+                                                                    <path d="M17.17,24a1,1,0,0,1-.71-.29L8.29,15.54a5,5,0,0,1,0-7.08L16.46.29a1,1,0,1,1,1.42,1.42L9.71,9.88a3,3,0,0,0,0,4.24l8.17,8.17a1,1,0,0,1,0,1.42A1,1,0,0,1,17.17,24Z"/>
+                                                                </svg>
+                                                            </a>
+                                                        </li>
+                                                    {{/if}}
+                                                    {{#each totalPages}}
+                                                            {{#compare (inc @index) 'eq' ../currentpage}}
+                                                                <li>
+                                                                    <a href="/search/{{inc @index}}" class="admin-content-makeup-items admin-content-makeup-items-active">{{inc @index}}</a>
+                                                                </li>
+                                                            {{else}}
+                                                                <li>
+                                                                    <a href="/search/{{inc @index}}" class="admin-content-makeup-items admin-content-makeup-items">{{inc @index}}</a>
+                                                                </li>
+                                                            {{/compare}}
+                                                    {{/each}}
+                                                    {{#if nextPage}}
+                                                        <li>
+                                                            <a href="/search/{{nextPage}}" class="admin-content-makeup-items">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="10" height="10">
+                                                                    <path d="M7,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l8.17-8.17a3,3,0,0,0,0-4.24L6.29,1.71A1,1,0,0,1,7.71.29l8.17,8.17a5,5,0,0,1,0,7.08L7.71,23.71A1,1,0,0,1,7,24Z"/>
+                                                                </svg>
+                                                            </a>
+                                                        </li>
+                                                    {{/if}}
+                                                    {{#if nextP}}
+                                                        <li>
+                                                            <a href="/search/{{nextP}}" class="admin-content-makeup-items">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="10" height="10">
+                                                                    <path d="M11.83,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l8.17-8.17a3,3,0,0,0,0-4.24L11.12,1.71A1,1,0,1,1,12.54.29l8.17,8.17a5,5,0,0,1,0,7.08l-8.17,8.17A1,1,0,0,1,11.83,24Z"/>
+                                                                    <path d="M1.83,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l9.59-9.58a1,1,0,0,0,0-1.42L1.12,1.71A1,1,0,0,1,2.54.29l9.58,9.59a3,3,0,0,1,0,4.24L2.54,23.71A1,1,0,0,1,1.83,24Z"/>
+                                                                </svg>
+                                                            </a>
+                                                        </li>
+                                                    {{/if}}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admin-content-page-change-password mr-24 admin-header-name-tab-pane">
+                            <div class="admin-content-page-change-password-container">
+                                <div class="form-change-password">
+                                    <form method="POST" action="" id ="changepasswordForm">
+                                        <div class="layout-content-form-tab-change-password">
+                                            <div class="layout-content-group">
+                                                <label class="layout-label" for="">old password</label>
+                                                <input type="password" id = "oldpassword" name="oldpassword" class="layout-content-input form-oldpass" placeholder="old password">
+                                            </div>
+                                            <div class="layout-content-group">
+                                                <label class="layout-label" for="">New Password</label>
+                                                <input type="password" id = "newchangepassword" name="newchangepassword" class="layout-content-input form-newpass" placeholder="New Password">
+                                            </div>
+                                            <div class="layout-content-group">
+                                                <label class="layout-label" for="">Comfirm New Password</label>
+                                                <input type="password" id = "comfirmpassword" name="comfirmpassword" class="layout-content-input form-confirmpass" placeholder="Comfirm New Password">
+                                            </div>
+                                        </div>
+                                        <div style="display:none" id="error-changePassword" class="layout-content-group error-form"></div>
+                                        <div class="form-btn">
+                                            <button type="button" data-toggle="modal"  id="submitBtn" data-target="#confirm-submit" class="btn btn-login js-change-password">Change Password</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admin-detail-user-update-id-card mr-24 admin-header-name-tab-pane">
+                            <div class="admin-content-page-update-id-card-container">
+                                <div class="form-update-id-card">
+                                    <form method="POST" action="" enctype="multipart/form-data">
+                                        <div class="layout-content-group">
+                                            <input type="file" id="file-photo-front" name="idfrontChange" class="layout-content-input file-input-front" accept="image/*">
+                                            <label for="file-photo-front" class="layout-content-input upload-photo">
+                                                <span class="file-placeholder-front">Choose file (Front)</span>
+                                                <span class="file-name file-name-front"></span>
+                                                <label class = "file-browse" for="file-photo-front">Browse</label>
+                                            </label>
+                                            <div class="file-image file-image-front">
+                                            </div>
+                                        </div>
+                                        <div class="layout-content-group">
+                                            <input type="file" id="file-photo-backside" name="idbacksideChange" class="layout-content-input file-input-backside" accept="image/*">
+                                            <label for="file-photo-backside" class="layout-content-input upload-photo">
+                                                <span class="file-placeholder-backside">Choose file (Back Side)</span>
+                                                <span class="file-name file-name-backside"></span>
+                                                <label class = "file-browse" for="file-photo-backside">Browse</label>
+                                            </label>
+                                            <div class="file-image file-image-backside">
+                                            </div>
+                                        </div>
+                                        <div class="form-btn">
+                                            <button type="submit" class="btn btn-login js-change-password">Update</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+</div>
+{{!-- {{#if firstLogin}}
+    <div class = "firstLogin">
+        true
+    </div>
+{{else}}
+    <div class = "firstLogin">
+        false
+    </div>
+{{/if}} --}}
+<div class="modal modal-change-password">
+    <div class="modal-overlay"></div>
+    <div class="modal-body">
+        <div class="modal-content">
+            <div class="header-change-password">
+                <h3>Change Password</h3>
+            </div>
+            <form action="/login" method="POST">
+                <div class="layout-content-group">
+                    <label class="layout-label" for="">new password</label>
+                    <input type="password" id = "firstPassword" name="firstPassword" class="layout-content-input" placeholder="Password">
+                </div>
+                <div class="layout-content-group">
+                    <label class="layout-label" for="">new comfirm password</label>
+                    <input type="password" id = "comfirmfirstPassword" name="comfirmfirstPassword" class="layout-content-input" placeholder="comfirm Password">
+                </div>
+                <div style="display:none" id="error-firstLogin" class="layout-content-group error-form"></div>
+                <div class="modal-footer-btn">
+                    <a href="/logout-modal">
+                        <button type="button" class="btn btn-cancel">
+                            Log out
+                        </button>
+                    </a>    
+                    <button type="submit" class="btn btn-verification">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal js-modal-change-password-comfirm">
+    <div class="modal-overlay"></div>
+    <div class="modal-body">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-header-icon-close">
+                    <svg  class="modal-header-vector-icon-close js-modal-detail-user-icon-close" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="14" height="14">
+                        <path d="M23.707.293h0a1,1,0,0,0-1.414,0L12,10.586,1.707.293a1,1,0,0,0-1.414,0h0a1,1,0,0,0,0,1.414L10.586,12,.293,22.293a1,1,0,0,0,0,1.414h0a1,1,0,0,0,1.414,0L12,13.414,22.293,23.707a1,1,0,0,0,1.414,0h0a1,1,0,0,0,0-1.414L13.414,12,23.707,1.707A1,1,0,0,0,23.707.293Z"/>
+                    </svg>
+                </span>
+                <h3 class="modal-header-title"></h3>
+                <span class="modal-header-content"></span>
+            </div>
+            <div class="modal-footer-btn">
+                <button class="btn btn-cancel js-modal-detail-user-close">Cancel</button>
+                <button type="submit" id="confirm-changepassword" class="btn  btn-verification">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#if flash}}
+    <div class = "mx-auto my-5 success-register">
+        <div id ="success" class = "alert alert-sucess text-center">{{{flash}}}</div>
+    </div>
+{{/if}}

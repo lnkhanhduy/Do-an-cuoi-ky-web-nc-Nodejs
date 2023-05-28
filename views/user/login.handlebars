@@ -1,0 +1,40 @@
+<div class="layout-content">
+    <div class="layout-content-form">
+        <div class="layout-content-title">
+            <h3>Welcome to E-Wallet</h3>
+            <span>New Here? <a href="/register">Create an Account</a></span>
+        </div>
+        <form action="/login" method="POST">
+            <div class="layout-content-form-tab-login">
+                <div class="layout-content-group layout-content-group-login">
+                    <label class="layout-label">Username</label>
+                    <input type="text" value="{{username}}" name="username" class="layout-content-input" placeholder="Username">
+                </div>
+                <div class="layout-content-group">
+                    <div class="layout-content-group-forgot-password">
+                        <label class="layout-label layout-content-group-login">Password</label>
+                        <a href="/password-recovery" class="layout-label layout-content-group-forgot-link">Forgot Password ?</a>
+                    </div>
+                    <input type="password" name="password" class="layout-content-input" placeholder="Password">
+                </div>
+                {{#if error}}
+                    <div class="layout-content-group error-form">
+                        {{error}}
+                    </div>
+                {{/if}}
+                {{#if flash}}
+                    <div class = "mx-auto my-5 success-register">
+                        <div id ="success" class = "alert alert-sucess text-center">{{{flash}}}</div>
+                    </div>
+                {{/if}}
+            </div>
+            <div class="form-btn">
+                <button class="btn btn-login" type="submit">Sign in</button>
+            </div>
+        </form>
+        <div class="copy-right">
+            <span>2022© <strong>Keenthemes</strong></span>
+        </div>
+    </div>
+</div>
+

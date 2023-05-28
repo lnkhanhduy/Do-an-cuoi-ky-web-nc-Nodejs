@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!-- reset css --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    {{!-- Font Roboto--}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
+    {{!-- Font Poppins --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    {{!-- Flaticon icon --}}
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+
+    <link rel="icon" href="/images/wallet_favicon.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Electronic wallet</title>
+</head>
+<body>
+    <div id="app">
+        <div class="layout-login-register">
+            <div class="layout-trademark">
+                <div class="layout-trademark-logo">
+                    <img src="/images/wallet_logo.png" alt="Image" class="layout-trademark-img-logo">
+                    <h3 class="layout-trademark-title">Connect and pay for everything <br> with E-Wallet</h3>
+                </div>
+                <div class="layout-trademark-img" style="background-image: url(/images/bg1.svg);"></div>
+            </div>
+            {{{body}}}
+        </div>
+    </div>
+</body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+</html>

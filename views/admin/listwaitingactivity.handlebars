@@ -1,0 +1,102 @@
+<div class="admin-content-layout">
+    <div class="admin-content-header">
+        <span class="admin-content-header-search">
+            <input type="text" class="admin-content-header-search-input" placeholder="Search user">
+            {{!-- <i class="fi fi-rr-search admin-content-header-icon-search"></i> --}}
+            <?xml version="1.0" encoding="UTF-8"?>
+            <svg class="admin-content-header-icon-search" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="14" height="14">
+                <path d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z"/>
+            </svg>
+        </span>
+    </div>
+    <div class="admin-content-table">
+        <div class="admin-content-table-content">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="table-thead">
+                        <tr>
+                            <th class="table-thead-id">ID</th>
+                            <th class="table-thead-user">User</th>
+                            <th class="table-thead-phone">Phone number</th>
+                            <th class="table-thead-joindate">Joined date</th>
+                            <th class="table-thead-action">Actions</th>
+                        </tr>
+                    </thead>
+                    {{#each user}}
+                        <tbody class="table-tbody">
+                            <tr>
+                                <td class="table-tbody-td-id">1</td>
+                                <td class="table-tbody-td-info">
+                                    <img src="https://preview.keenthemes.com/metronic8/demo15/assets/media/avatars/300-1.jpg" class="table-tbody-td-img" alt="Image">
+                                    <div class="table-tbody-td-name-email">
+                                        <span class="table-tbody-td-name">{{{this.fullname}}}</span>
+                                        <span class="table-tbody-td-email">{{{this.email}}}</span>
+                                    </div>
+                                </td>
+                                <td class="table-tbody-td-number">{{{this.phone}}}</td>
+                                <td class="table-tbody-td-date">{{{this.birthday}}}</td>
+                                <td>
+                                    <a href="detail-user/{{{this.id}}}" class="table-tbody-td-action">
+                                        <span>
+                                            Detail
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    {{/each}}
+                </table>
+            </div>
+        </div>
+        <div class="admin-content-page">
+            <div class="admin-content-page-row">
+                <div class="admin-content-page-column-4"></div>
+                <div class="admin-content-page-column-8">
+                    <div class="admin-content-makeup">
+                        <ul class="admin-content-makeup-list">
+                            <li>
+                                <a href="#" class="admin-content-makeup-items">
+                                    <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="10" height="10">
+                                        <path d="M12,24a1,1,0,0,1-.71-.29L3.12,15.54a5,5,0,0,1,0-7.08L11.29.29a1,1,0,1,1,1.42,1.42L4.54,9.88a3,3,0,0,0,0,4.24l8.17,8.17a1,1,0,0,1,0,1.42A1,1,0,0,1,12,24Z"/>
+                                        <path d="M22,24a1,1,0,0,1-.71-.29l-9.58-9.59a3,3,0,0,1,0-4.24L21.29.29a1,1,0,1,1,1.42,1.42l-9.59,9.58a1,1,0,0,0,0,1.42l9.59,9.58a1,1,0,0,1,0,1.42A1,1,0,0,1,22,24Z"/>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="admin-content-makeup-items">
+                                    <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="10" height="10">
+                                        <path d="M17.17,24a1,1,0,0,1-.71-.29L8.29,15.54a5,5,0,0,1,0-7.08L16.46.29a1,1,0,1,1,1.42,1.42L9.71,9.88a3,3,0,0,0,0,4.24l8.17,8.17a1,1,0,0,1,0,1.42A1,1,0,0,1,17.17,24Z"/>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="admin-content-makeup-items admin-content-makeup-items-active">1</a>
+                            </li>
+                            <li>
+                                <a href="#" class="admin-content-makeup-items">2</a>
+                            </li>
+                            <li>
+                                <a href="#" class="admin-content-makeup-items">3</a>
+                            </li>
+                            <li>
+                                <a href="#" class="admin-content-makeup-items">
+                                    <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="10" height="10">
+                                        <path d="M7,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l8.17-8.17a3,3,0,0,0,0-4.24L6.29,1.71A1,1,0,0,1,7.71.29l8.17,8.17a5,5,0,0,1,0,7.08L7.71,23.71A1,1,0,0,1,7,24Z"/>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="admin-content-makeup-items">
+                                    <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="10" height="10">
+                                        <path d="M11.83,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l8.17-8.17a3,3,0,0,0,0-4.24L11.12,1.71A1,1,0,1,1,12.54.29l8.17,8.17a5,5,0,0,1,0,7.08l-8.17,8.17A1,1,0,0,1,11.83,24Z"/>
+                                        <path d="M1.83,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l9.59-9.58a1,1,0,0,0,0-1.42L1.12,1.71A1,1,0,0,1,2.54.29l9.58,9.59a3,3,0,0,1,0,4.24L2.54,23.71A1,1,0,0,1,1.83,24Z"/>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   
